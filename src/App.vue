@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="text-center mt-5">Dynamic Fuel and Production Charts</h2>
+        <p> Trending data for the production cycles of Fossil Fuels!
+        </p>
+      <DinoChart />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DinoChart from './components/DinoChart.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    DinoChart
   }
 }
 </script>

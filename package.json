@@ -13,7 +13,11 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "core-js": "^3.8.3",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
     "vue": "^3.2.41"
   },
   "devDependencies": {

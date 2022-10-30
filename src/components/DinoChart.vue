@@ -1,7 +1,7 @@
 <template>
     <div>
       <canvas id="OilData"></canvas>
-      <select id="year" @change="changeData">
+      <select v-model="this.filters.year" @change="changeData">
         <option value="2008">2008</option>
         <option value="2009">2009</option>
         <option value="2010">2010</option>
@@ -14,11 +14,12 @@
         <option value="2017">2017</option>
         <option value="2018">2018</option>
       </select>
-      <select id="state" @change="changeData">
+      <select v-model="this.filters.state" @change="changeData">
         <option value="AK - Alaska">AK - Alaska</option>
         <option value="AL - Alabama">AL - Alabama</option>
         <option value="AR - Arkansas">AR - Arkansas</option>
       </select>
+      {{this.filters}}
     </div>
   </template>
   
@@ -30,16 +31,16 @@
     name: 'OilData',
     data(){
         return{
-            chartOneData:chartOneData
+            chartOneData:chartOneData,
+            filters: {
+              year: null,
+              state: null
+            }
         }
     },
     methods:{
         changeData: function(){
-            const year = document.getElementById('year').value;
-            const state = document.getElementById('state').value;
-            console.log(year);
-            console.log(state);
-            chartOneData.options.parsing.yAxisKey = `monthly.${year}.${state}`;
+            chartOneData.options.parsing.yAxisKey = `monthly.${this.filters.year}.${this.filters.state}`;
             //chartOneData.update();
         }
     },

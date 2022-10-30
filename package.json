@@ -19,6 +19,7 @@
     "vue": "^3.2.41",
     "vue-chartjs": "^4.1.2",
     "vue-chartkick": "^1.1.0",
+    "csv-parse": "^5.3.1",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1"

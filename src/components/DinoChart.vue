@@ -18,6 +18,7 @@
         <option value="AK - Alaska">AK - Alaska</option>
         <option value="AL - Alabama">AL - Alabama</option>
         <option value="AR - Arkansas">AR - Arkansas</option>
+        <option value="TX - Texas">TX - Texas</option>
       </select>
       {{this.changeData()}}
     </div>
@@ -27,6 +28,7 @@
   import chartOneData from '../OilData.js';
   import Chart from 'chart.js/auto';
   import {groupBy} from '../assets/dataset-utils'
+  //import {formatDate} from '../assets/dataset-utils'
 
   export default {
     name: 'OilData',

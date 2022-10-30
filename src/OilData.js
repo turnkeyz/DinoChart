@@ -8,22 +8,23 @@
 "West Virginia", "Wyoming"];*/
 //const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-//var year = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018];
-//var barrels = [];
+//const year = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018];
+//var barrels = [10,202,555,44,33,21,21,66,22,88,99];
 
 //const dateDetails = []
-let data = [{"Year":"2000","State":"texas","Barrels":"25"},
-{"Year":"2001","State":"texas","Barrels":"35"},
-{"Year":"2002","State":"texas","Barrels":"52"},
+let data = [{"Year":"6/1/2008","State":"texas","Barrels":"25"},
+{"Year":"6/1/2008","State":"texas","Barrels":"35"},
+{"Year":"6/1/2008","State":"texas","Barrels":"52"},
 {"Year":"2000","State":"florida","Barrels":"15"},
-{"Year":"2001","State":"florida","Barrels":"25"},
+{"Year":"6/1/2008","State":"florida","Barrels":"25"},
 {"Year":"2002","State":"florida","Barrels":"42"}]
 
-import {groupBy} from './assets/dataset-utils'
-
+import {groupBy, formatDate} from './assets/dataset-utils'
+let dates = formatDate(data)
 data = groupBy(data, 'State')
 
-console.log(data)
+console.log(dates)
+//console.log(data)
 
 export const chartOneData = {
     type:"line",

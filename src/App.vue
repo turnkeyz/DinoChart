@@ -9,9 +9,7 @@
         <br>
         {{this.filePath}}
         <br>
-        <textarea v-model="this.content" name="content" id="content" cols="100" rows="30">
-        </textarea>
-      <DinoChart />
+      <DinoChart :dataset="this.content"/>
       </div>
     </div>
   </div>
@@ -19,7 +17,7 @@
 
 <script>
 import DinoChart from './components/DinoChart.vue'
- 
+
 export default {
   name: 'App',
   components: {
@@ -37,11 +35,21 @@ export default {
       window.electron.openDialog();
       this.filePath = await window.electron.on('on-file-select');
 
-      let data = await window.electron.openCSV(this.filePath);
-      console.log(data);
+      this.content = await window.electron.openCSV(this.filePath);
 
-      this.content = JSON.stringify(data);
+
     }
   }
 }
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

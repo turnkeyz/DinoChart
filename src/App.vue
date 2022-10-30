@@ -5,7 +5,11 @@
         <h2 class="text-center mt-5">Dynamic Fuel and Production Charts</h2>
         <p> Trending data for the production cycles of Fossil Fuels!
         </p>
-      <DinoChart />
+        <button @click="openFile" class="btn btn-primary">Open File</button>
+        <br>
+        {{this.filePath}}
+        <br>
+      <DinoChart :dataset="this.content"/>
       </div>
     </div>
   </div>
@@ -18,6 +22,23 @@ export default {
   name: 'App',
   components: {
     DinoChart
+  },
+  data() {
+    return {
+      filePath: null,
+      content: null
+    }
+  },
+  methods: {
+    openFile: async function () {
+      
+      window.electron.openDialog();
+      this.filePath = await window.electron.on('on-file-select');
+
+      this.content = await window.electron.openCSV(this.filePath);
+
+
+    }
   }
 }
 </script>

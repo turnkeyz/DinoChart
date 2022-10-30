@@ -18,6 +18,7 @@
         <option value="AK - Alaska">AK - Alaska</option>
         <option value="AL - Alabama">AL - Alabama</option>
         <option value="AR - Arkansas">AR - Arkansas</option>
+        <option value="TX - Texas">TX - Texas</option>
       </select>
     </div>
   </template>
@@ -39,7 +40,7 @@
             const state = document.getElementById('state').value;
             console.log(year);
             console.log(state);
-            chartOneData.options.parsing.yAxisKey = `monthly.${year}.${state}`;
+            chartOneData.options.parsing.yAxisKey = `yearly.${year}.barrels`;
             //chartOneData.update();
         }
     },

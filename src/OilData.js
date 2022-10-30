@@ -8,8 +8,8 @@
 "West Virginia", "Wyoming"];*/
 //const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-//var year = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018];
-//var barrels = [];
+//const year = [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018];
+//var barrels = [10,202,555,44,33,21,21,66,22,88,99];
 
 //const dateDetails = []
 
@@ -19,14 +19,10 @@ export const chartOneData = {
         datasets:[{
             label: 'Monthly Barrels',
             data: [
-                {
-                    id: 2008, monthly:
-                    {
-                        2008: {barrels: 100},
-                        2009: {barrels: 45},
-                        2010: {barrels: 190},
-                    }
-                }/*
+                {"Year":"2000","State":"texas","Barrels":"25"},
+                {"Year":"2001","State":"texas","Barrels":"35"},
+                {"Year":"2002","State":"texas","Barrels":"52"}
+                /*
                 {
                     id: 'Feb', monthly:
                     {
@@ -136,8 +132,8 @@ export const chartOneData = {
     options:
     {
         parsing:{
-            xAxisKey: 'id',
-            yAxisKey: 'monthly.2008.barrels'
+            xAxisKey: 'Year',
+            yAxisKey: 'Barrels'
         },
         scales:{
             y: {

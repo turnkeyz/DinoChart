@@ -12,20 +12,28 @@
 //var barrels = [];
 
 //const dateDetails = []
+let data = [{"Year":"2000","State":"texas","Barrels":"25"},
+{"Year":"2001","State":"texas","Barrels":"35"},
+{"Year":"2002","State":"texas","Barrels":"52"},
+{"Year":"2000","State":"florida","Barrels":"15"},
+{"Year":"2001","State":"florida","Barrels":"25"},
+{"Year":"2002","State":"florida","Barrels":"42"}]
+
+import {groupBy} from './assets/dataset-utils'
+
+data = groupBy(data, 'State')
+
+console.log(data)
 
 export const chartOneData = {
     type:"line",
     data: {
-        datasets: [{
-            data: [{"Year":"2000","State":"texas","Barrels":"25"},
-            {"Year":"2001","State":"texas","Barrels":"35"},
-            {"Year":"2002","State":"texas","Barrels":"52"}]
-        }]
+        datasets: data
     },
     options: {
         parsing: {
             xAxisKey: 'Year',
-            yAxisKey: 'Barrels'
+            yAxisKey: 'Barrels',
         }
     }
     

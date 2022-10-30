@@ -1,6 +1,6 @@
 <template>
     <div>
-      <canvas id="OilData"></canvas>
+      <canvas id="chart"></canvas>
       <select v-model="this.filters.year" @change="changeData">
         <option value="2008">2008</option>
         <option value="2009">2009</option>
@@ -26,28 +26,45 @@
   <script>
   import chartOneData from '../OilData.js';
   import Chart from 'chart.js/auto';
+  import {groupBy} from '../assets/dataset-utils'
 
   export default {
     name: 'OilData',
+    props: {
+      dataset: Array
+    },
+    watch: { 
+      dataset: function(newVal, oldVal) { // watch it
+        console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+
+        this.graph.data.datasets = groupBy(this.dataset, 'State');
+
+        this.graph.update();
+
+      }
+    },
     data(){
         return{
             chartOneData:chartOneData,
             filters: {
               year: null,
               state: null
-            }
+            },
+            graph: null
         }
     },
     methods:{
         changeData: function(){
             chartOneData.options.parsing.yAxisKey = `monthly.${this.filters.year}.${this.filters.state}`;
             //chartOneData.update();
+
+            
         }
     },
     mounted(){
-        const ctx = document.getElementById('OilData');
+        const ctx = document.getElementById("chart").getContext("2d");
         //window.Electron.Chart(ctx, this.chartOneData)
-        new Chart(ctx,this.chartOneData)
+        this.graph = new Chart(ctx,this.chartOneData);
     }
   }
   

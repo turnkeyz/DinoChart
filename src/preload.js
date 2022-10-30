@@ -13,26 +13,28 @@ contextBridge.exposeInMainWorld('electron', {
     return new Promise((resolve, reject) => {
         let data = []
         fs.createReadStream(filePath)
-        .pipe(parse({delimiter: ',' /*, columns: true*/}))
+        .pipe(parse({delimiter: ',', columns: true}))
         .on('data', function(csvrow) {
             data.push(csvrow);        
         })
         .on('end',function() {
 
-            const [keysList, ...valuesList] = data;
-            let obj = {};
-            //Loop through the values list
-            keysList.forEach((col, i) => {
+            resolve(data)
+
+            // const [keysList, ...valuesList] = data;
+            // let obj = {};
+            // //Loop through the values list
+            // keysList.forEach((col, i) => {
                 
-                obj[col] = []
-            //Since each element in values list is a list again
-            //loop through the list and add them to the `obj` object
-                valuesList.forEach((val) => {
-                    obj[col].push(val[i]);
-                })
-            });
+            //     obj[col] = []
+            // //Since each element in values list is a list again
+            // //loop through the list and add them to the `obj` object
+            //     valuesList.forEach((val) => {
+            //         obj[col].push(val[i]);
+            //     })
+            // });
             
-            resolve(obj)
+            // resolve(obj)
         });
     });
 

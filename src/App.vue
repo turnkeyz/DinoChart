@@ -35,15 +35,12 @@ export default {
     openFile: async function () {
       
       window.electron.openDialog();
-      this.filePath = await window.electron.on('on-file-select')
+      this.filePath = await window.electron.on('on-file-select');
 
-      window.electron.fs.readFile(this.filePath, 'utf8', (err, data) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        this.content = data;
-      });
+      let data = await window.electron.openCSV(this.filePath);
+      console.log(data);
+
+      this.content = JSON.stringify(data);
     }
   }
 }

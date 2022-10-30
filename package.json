@@ -13,8 +13,12 @@
   },
   "main": "background.js",
   "dependencies": {
+    "chartkick": "^4.2.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.41"
+    "hchs-vue-charts": "^1.2.8",
+    "vue": "^3.2.41",
+    "vue-chartjs": "^4.1.2",
+    "vue-chartkick": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -22,6 +26,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "chart.js": "^3.9.1",
     "electron": "^13.0.0",
     "electron-devtools-installer": "^3.1.0",
     "eslint": "^7.32.0",

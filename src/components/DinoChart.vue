@@ -15,10 +15,7 @@
         <option value="2018">2018</option>
       </select>
       <select v-model="this.filters.state" @change="changeData">
-        <option value="AK - Alaska">AK - Alaska</option>
-        <option value="AL - Alabama">AL - Alabama</option>
-        <option value="AR - Arkansas">AR - Arkansas</option>
-        <option value="TX - Texas">TX - Texas</option>
+        <option v-bind:key="row" v-for="row in this.dataset" :value="row.State">{{row.State}}</option>
       </select>
       {{this.changeData()}}
     </div>
@@ -39,7 +36,7 @@
       dataset: function(newVal, oldVal) { // watch it
         console.log('Prop changed: ', newVal, ' | was: ', oldVal)
 
-        this.graph.data.datasets = groupBy(this.dataset, 'State');
+        this.chartOneData.data.datasets = groupBy(this.dataset, 'State');
 
         this.graph.destroy();
 

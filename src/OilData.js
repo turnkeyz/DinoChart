@@ -12,19 +12,19 @@
 //var barrels = [10,202,555,44,33,21,21,66,22,88,99];
 
 //const dateDetails = []
-let data = [{"Year":"6/1/2008","State":"texas","Barrels":"25"},
+let data = [{"Year":"6/1/2000","State":"texas","Barrels":"25"},
+{"Year":"2001","State":"florida","Barrels":"15"},
 {"Year":"6/1/2008","State":"texas","Barrels":"35"},
 {"Year":"6/1/2008","State":"texas","Barrels":"52"},
-{"Year":"2000","State":"florida","Barrels":"15"},
 {"Year":"6/1/2008","State":"florida","Barrels":"25"},
-{"Year":"2002","State":"florida","Barrels":"42"}]
+{"Year":"2010","State":"florida","Barrels":"42"}]
 
-import {groupBy, formatDate} from './assets/dataset-utils'
-let dates = formatDate(data)
+import {groupBy, formatDate, getYearLabels} from './assets/dataset-utils'
+data = formatDate(data)
+let yearLabels = getYearLabels(data)
 data = groupBy(data, 'State')
 
-console.log(dates)
-//console.log(data)
+console.log(yearLabels)
 
 export const chartOneData = {
     type:"line",
@@ -37,13 +37,13 @@ export const chartOneData = {
             yAxisKey: 'Barrels',
         },
         scales: {
-            yAxes: {
+            xAxes: {
                 scaleLabel: {
                     display: true
                 },
-                ticks: {
-                    suggestedMin: 0,
-                    beginAtZero: true
+                ticks: {                    
+                    callback: (index) => yearLabels[index],
+                    stepSize: 1                    
                 }
             },
         }

@@ -6,7 +6,6 @@ import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 import path from 'path'
 import {dialog} from 'electron'
-import Chart from 'chart.js/auto';
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([

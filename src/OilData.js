@@ -34,6 +34,17 @@ export const chartOneData = {
         parsing: {
             xAxisKey: 'Year',
             yAxisKey: 'Barrels',
+        },
+        scales: {
+            yAxes: {
+                scaleLabel: {
+                    display: true
+                },
+                ticks: {
+                    suggestedMin: 0,
+                    beginAtZero: true
+                }
+            },
         }
     }
     

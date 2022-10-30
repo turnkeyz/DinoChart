@@ -16,4 +16,3 @@ export function groupBy(arr, property) {
     return result
 
   }
-

@@ -19,7 +19,7 @@
         <option value="AL - Alabama">AL - Alabama</option>
         <option value="AR - Arkansas">AR - Arkansas</option>
       </select>
-      {{this.filters}}
+      {{this.changeData()}}
     </div>
   </template>
   
@@ -39,7 +39,11 @@
 
         this.graph.data.datasets = groupBy(this.dataset, 'State');
 
-        this.graph.update();
+        this.graph.destroy();
+
+        const ctx = document.getElementById("chart");
+      
+        this.graph = new Chart(ctx, this.chartOneData);
 
       }
     },
@@ -55,16 +59,13 @@
     },
     methods:{
         changeData: function(){
-            chartOneData.options.parsing.yAxisKey = `monthly.${this.filters.year}.${this.filters.state}`;
-            //chartOneData.update();
-
-            
+          return true
         }
     },
     mounted(){
-        const ctx = document.getElementById("chart").getContext("2d");
-        //window.Electron.Chart(ctx, this.chartOneData)
-        this.graph = new Chart(ctx,this.chartOneData);
+      const ctx = document.getElementById("chart");
+      
+      this.graph = new Chart(ctx, this.chartOneData);
     }
   }
   

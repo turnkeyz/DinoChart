@@ -53,6 +53,3 @@ contextBridge.exposeInMainWorld('electron', {
 
   },
 });
-
-
-
